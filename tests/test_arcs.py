@@ -283,6 +283,45 @@ class LoopArcTest(CoverageTest):
             arcz=arcz,
         )
 
+    def test_todo1(self):
+        self.check_coverage("""\
+            a = 1
+            while True:
+                a = 3
+                break
+            assert a == 3
+            """,
+            arcz = ".1 12 23 34 45 5.",
+            arcz_missing = "",
+            )
+    def test_todo3(self):
+        self.check_coverage("""\
+            a = 1
+            while False:
+                a = 3
+                break
+            assert a == 1
+            """,
+            arcz = ".1 12 23 34 45 5.",
+            arcz_missing = "34 45",
+            )
+    def test_todo2(self):
+        self.check_coverage("""\
+            a = 1
+            while True:
+                a = 3
+                break
+            else:
+                a = 6
+            assert a == 3
+            """,
+            arcz = ".1 12 23 34 47 7.  67",
+            arcz_missing = "67",
+            )
+        assert "while True with else" == "done"
+        assert "while False with else" == "done"
+        assert "while if continue else break" == "done"
+
     def test_zero_coverage_while_loop(self):
         # https://bitbucket.org/ned/coveragepy/issue/502
         self.make_file("main.py", "print('done')")

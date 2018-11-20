@@ -770,8 +770,6 @@ class AstArcAnalyzer(object):
         return None
 
     # In the fullness of time, these might be good tests to write:
-    #   while EXPR:
-    #   while False:
     #   listcomps hidden deep in other expressions
     #   listcomps hidden in lists: x = [[i for i in range(10)]]
     #   nested function definitions
