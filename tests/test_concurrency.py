@@ -272,6 +272,26 @@ class ConcurrencyTest(CoverageTest):
         code = SIMPLE.format(QLIMIT=self.QLIMIT)
         self.try_some_code(code, "gevent", gevent)
 
+    def test_gevent_joinall(self):
+        code = """\
+            import gevent
+
+            greenlet = gevent.spawn(lambda: None)
+            gevent.joinall([greenlet])
+            print("covered after joinall")
+            """
+        self.try_some_code(code, "gevent", gevent, "covered after joinall\n")
+
+    def test_gevent_join(self):
+        code = """\
+            import gevent
+
+            greenlet = gevent.spawn(lambda: None)
+            greenlet.join()
+            print("covered after join")
+            """
+        self.try_some_code(code, "gevent", gevent, "covered after join\n")
+
     def test_greenlet(self):
         GREENLET = """\
             from greenlet import greenlet
