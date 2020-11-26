@@ -351,6 +351,10 @@ $border-indicator-width: .2em;
     padding: 1em 0 1em $left-gutter;
     font-family: $font-code;
 
+    table {
+        width: 100%;
+    }
+
     .p {
         // position relative makes position:absolute pop-ups appear in the right place.
         position: relative;
@@ -485,10 +489,6 @@ $border-indicator-width: .2em;
                 }
             }
 
-        }
-
-        .x {
-            xxuser-select: none;
         }
 
         .r {

@@ -68,11 +68,12 @@
 </div>
 
 <div id="source">
+    <table>
     {% for line in lines -%}
         {% joined %}
-        <div id="t{{line.number}}" class="p {{line.css_class}}">
+        <tr><td id="t{{line.number}}" class="p {{line.css_class}}">
             <span class="n"><a href="#t{{line.number}}">{{line.number}}</a></span>
-            <span class="t">{{line.html}}</span><span class="x">&#x2009;</span>
+            <span class="t">{{line.html}}</span>
             {% if line.context_list %}
                 <input type="checkbox" id="ctxs{{line.number}}" />
             {% endif %}
@@ -94,9 +95,10 @@
                     {% endfor %}
                 </span>
             {% endif %}
-        </div>
         {% endjoined %}
+</td></tr>
     {% endfor %}
+    </table>
 </div>
 
 <div id="footer">
