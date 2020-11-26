@@ -221,7 +221,7 @@ class Templite(object):
             else:
                 # Literal content.  If it isn't empty, output it.
                 if in_joined:
-                    token = re.sub(r"\s*\n\s*", "", token.strip())
+                    token = re.sub(r"\s*\n\s*", "", token)
                 elif squash:
                     token = token.lstrip()
                 if token:

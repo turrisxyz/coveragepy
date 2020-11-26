@@ -2,7 +2,7 @@
 /* Licensed under the Apache License: http://www.apache.org/licenses/LICENSE-2.0 */
 /* For details: https://github.com/nedbat/coveragepy/blob/master/NOTICE.txt */
 /* Don't edit this .css file. Edit the .scss file instead! */
-html, body, h1, h2, h3, p, table, td, th { margin: 0; padding: 0; border: 0; font-weight: inherit; font-style: inherit; font-size: 100%; font-family: inherit; vertical-align: baseline; }
+html, body, h1, h2, h3, p, table, td, th, div.p { margin: 0; padding: 0; border: 0; font-weight: inherit; font-style: inherit; font-size: 100%; font-family: inherit; vertical-align: baseline; }
 
 body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; font-size: 1em; background: #fff; color: #000; }
 
@@ -14,7 +14,7 @@ html > body { font-size: 16px; }
 
 a:active, a:focus { outline: 2px dashed #007acc; }
 
-p { font-size: .875em; line-height: 1.4em; }
+p, div.p { font-size: .875em; line-height: 1.4em; }
 
 table { border-collapse: collapse; }
 
@@ -102,9 +102,9 @@ h2.stats { margin-top: .5em; font-size: 1em; }
 
 @media (prefers-color-scheme: dark) { .stats button.par.show_par { background: #650; } }
 
-.help_panel, #source p .annotate.long { display: none; position: absolute; z-index: 999; background: #ffffcc; border: 1px solid #888; border-radius: .2em; color: #333; padding: .25em .5em; }
+.help_panel, #source .p .annotate.long { display: none; position: absolute; z-index: 999; background: #ffffcc; border: 1px solid #888; border-radius: .2em; color: #333; padding: .25em .5em; }
 
-#source p .annotate.long { white-space: normal; float: right; top: 1.75em; right: 1em; height: auto; }
+#source .p .annotate.long { white-space: normal; float: right; top: 1.75em; right: 1em; height: auto; }
 
 #keyboard_icon { float: right; margin: 5px; cursor: pointer; }
 
@@ -124,125 +124,127 @@ h2.stats { margin-top: .5em; font-size: 1em; }
 
 #source { padding: 1em 0 1em 3rem; font-family: SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
 
-#source p { position: relative; white-space: pre; }
+#source .p { position: relative; white-space: pre; }
 
-#source p * { box-sizing: border-box; }
+#source .p * { box-sizing: border-box; }
 
-#source p .n { float: left; text-align: right; width: 3rem; box-sizing: border-box; margin-left: -3rem; padding-right: 1em; color: #999; }
+#source .p .n { float: left; text-align: right; width: 3rem; box-sizing: border-box; margin-left: -3rem; padding-right: 1em; color: #999; user-select: none; }
 
-@media (prefers-color-scheme: dark) { #source p .n { color: #777; } }
+@media (prefers-color-scheme: dark) { #source .p .n { color: #777; } }
 
-#source p .n a { text-decoration: none; color: #999; }
+#source .p .n a { text-decoration: none; color: #999; }
 
-@media (prefers-color-scheme: dark) { #source p .n a { color: #777; } }
+@media (prefers-color-scheme: dark) { #source .p .n a { color: #777; } }
 
-#source p .n a:hover { text-decoration: underline; color: #999; }
+#source .p .n a:hover { text-decoration: underline; color: #999; }
 
-@media (prefers-color-scheme: dark) { #source p .n a:hover { color: #777; } }
+@media (prefers-color-scheme: dark) { #source .p .n a:hover { color: #777; } }
 
-#source p.highlight .n { background: #ffdd00; }
+#source .p.highlight .n { background: #ffdd00; }
 
-#source p .t { display: inline-block; width: 100%; box-sizing: border-box; margin-left: -.5em; padding-left: 0.3em; border-left: 0.2em solid #fff; }
+#source .p .t { display: inline-block; width: 100%; box-sizing: border-box; margin-left: -.5em; padding-left: 0.3em; border-left: 0.2em solid #fff; }
 
-@media (prefers-color-scheme: dark) { #source p .t { border-color: #1e1e1e; } }
+@media (prefers-color-scheme: dark) { #source .p .t { border-color: #1e1e1e; } }
 
-#source p .t:hover { background: #f2f2f2; }
+#source .p .t:hover { background: #f2f2f2; }
 
-@media (prefers-color-scheme: dark) { #source p .t:hover { background: #282828; } }
+@media (prefers-color-scheme: dark) { #source .p .t:hover { background: #282828; } }
 
-#source p .t:hover ~ .r .annotate.long { display: block; }
+#source .p .t:hover ~ .r .annotate.long { display: block; }
 
-#source p .t .com { color: #008000; font-style: italic; line-height: 1px; }
+#source .p .t .com { color: #008000; font-style: italic; line-height: 1px; }
 
-@media (prefers-color-scheme: dark) { #source p .t .com { color: #6A9955; } }
+@media (prefers-color-scheme: dark) { #source .p .t .com { color: #6A9955; } }
 
-#source p .t .key { font-weight: bold; line-height: 1px; }
+#source .p .t .key { font-weight: bold; line-height: 1px; }
 
-#source p .t .str { color: #0451A5; }
+#source .p .t .str { color: #0451A5; }
 
-@media (prefers-color-scheme: dark) { #source p .t .str { color: #9CDCFE; } }
+@media (prefers-color-scheme: dark) { #source .p .t .str { color: #9CDCFE; } }
 
-#source p.mis .t { border-left: 0.2em solid #ff0000; }
+#source .p.mis .t { border-left: 0.2em solid #ff0000; }
 
-#source p.mis.show_mis .t { background: #fdd; }
+#source .p.mis.show_mis .t { background: #fdd; }
 
-@media (prefers-color-scheme: dark) { #source p.mis.show_mis .t { background: #4b1818; } }
+@media (prefers-color-scheme: dark) { #source .p.mis.show_mis .t { background: #4b1818; } }
 
-#source p.mis.show_mis .t:hover { background: #f2d2d2; }
+#source .p.mis.show_mis .t:hover { background: #f2d2d2; }
 
-@media (prefers-color-scheme: dark) { #source p.mis.show_mis .t:hover { background: #532323; } }
+@media (prefers-color-scheme: dark) { #source .p.mis.show_mis .t:hover { background: #532323; } }
 
-#source p.run .t { border-left: 0.2em solid #00dd00; }
+#source .p.run .t { border-left: 0.2em solid #00dd00; }
 
-#source p.run.show_run .t { background: #dfd; }
+#source .p.run.show_run .t { background: #dfd; }
 
-@media (prefers-color-scheme: dark) { #source p.run.show_run .t { background: #373d29; } }
+@media (prefers-color-scheme: dark) { #source .p.run.show_run .t { background: #373d29; } }
 
-#source p.run.show_run .t:hover { background: #d2f2d2; }
+#source .p.run.show_run .t:hover { background: #d2f2d2; }
 
-@media (prefers-color-scheme: dark) { #source p.run.show_run .t:hover { background: #404633; } }
+@media (prefers-color-scheme: dark) { #source .p.run.show_run .t:hover { background: #404633; } }
 
-#source p.exc .t { border-left: 0.2em solid #808080; }
+#source .p.exc .t { border-left: 0.2em solid #808080; }
 
-#source p.exc.show_exc .t { background: #eee; }
+#source .p.exc.show_exc .t { background: #eee; }
 
-@media (prefers-color-scheme: dark) { #source p.exc.show_exc .t { background: #333; } }
+@media (prefers-color-scheme: dark) { #source .p.exc.show_exc .t { background: #333; } }
 
-#source p.exc.show_exc .t:hover { background: #e2e2e2; }
+#source .p.exc.show_exc .t:hover { background: #e2e2e2; }
 
-@media (prefers-color-scheme: dark) { #source p.exc.show_exc .t:hover { background: #3c3c3c; } }
+@media (prefers-color-scheme: dark) { #source .p.exc.show_exc .t:hover { background: #3c3c3c; } }
 
-#source p.par .t { border-left: 0.2em solid #dddd00; }
+#source .p.par .t { border-left: 0.2em solid #dddd00; }
 
-#source p.par.show_par .t { background: #ffa; }
+#source .p.par.show_par .t { background: #ffa; }
 
-@media (prefers-color-scheme: dark) { #source p.par.show_par .t { background: #650; } }
+@media (prefers-color-scheme: dark) { #source .p.par.show_par .t { background: #650; } }
 
-#source p.par.show_par .t:hover { background: #f2f2a2; }
+#source .p.par.show_par .t:hover { background: #f2f2a2; }
 
-@media (prefers-color-scheme: dark) { #source p.par.show_par .t:hover { background: #6d5d0c; } }
+@media (prefers-color-scheme: dark) { #source .p.par.show_par .t:hover { background: #6d5d0c; } }
 
-#source p .r { position: absolute; top: 0; right: 2.5em; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; }
+#source .p .x { xxuser-select: none; }
 
-#source p .annotate { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; color: #666; padding-right: .5em; }
+#source .p .r { position: absolute; top: 0; right: 2.5em; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; }
 
-@media (prefers-color-scheme: dark) { #source p .annotate { color: #ddd; } }
+#source .p .annotate { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; color: #666; padding-right: .5em; user-select: none; }
 
-#source p .annotate.short:hover ~ .long { display: block; }
+@media (prefers-color-scheme: dark) { #source .p .annotate { color: #ddd; } }
 
-#source p .annotate.long { width: 30em; right: 2.5em; }
+#source .p .annotate.short:hover ~ .long { display: block; }
 
-#source p input { display: none; }
+#source .p .annotate.long { width: 30em; right: 2.5em; }
 
-#source p input ~ .r label.ctx { cursor: pointer; border-radius: .25em; }
+#source .p input { display: none; }
 
-#source p input ~ .r label.ctx::before { content: "▶ "; }
+#source .p input ~ .r label.ctx { cursor: pointer; border-radius: .25em; }
 
-#source p input ~ .r label.ctx:hover { background: #d5f7ff; color: #666; }
+#source .p input ~ .r label.ctx::before { content: "▶ "; }
 
-@media (prefers-color-scheme: dark) { #source p input ~ .r label.ctx:hover { background: #0f3a42; } }
+#source .p input ~ .r label.ctx:hover { background: #d5f7ff; color: #666; }
 
-@media (prefers-color-scheme: dark) { #source p input ~ .r label.ctx:hover { color: #aaa; } }
+@media (prefers-color-scheme: dark) { #source .p input ~ .r label.ctx:hover { background: #0f3a42; } }
 
-#source p input:checked ~ .r label.ctx { background: #aef; color: #666; border-radius: .75em .75em 0 0; padding: 0 .5em; margin: -.25em 0; }
+@media (prefers-color-scheme: dark) { #source .p input ~ .r label.ctx:hover { color: #aaa; } }
 
-@media (prefers-color-scheme: dark) { #source p input:checked ~ .r label.ctx { background: #056; } }
+#source .p input:checked ~ .r label.ctx { background: #aef; color: #666; border-radius: .75em .75em 0 0; padding: 0 .5em; margin: -.25em 0; }
 
-@media (prefers-color-scheme: dark) { #source p input:checked ~ .r label.ctx { color: #aaa; } }
+@media (prefers-color-scheme: dark) { #source .p input:checked ~ .r label.ctx { background: #056; } }
 
-#source p input:checked ~ .r label.ctx::before { content: "▼ "; }
+@media (prefers-color-scheme: dark) { #source .p input:checked ~ .r label.ctx { color: #aaa; } }
 
-#source p input:checked ~ .ctxs { padding: .25em .5em; overflow-y: scroll; max-height: 10.5em; }
+#source .p input:checked ~ .r label.ctx::before { content: "▼ "; }
 
-#source p label.ctx { color: #999; display: inline-block; padding: 0 .5em; font-size: .8333em; }
+#source .p input:checked ~ .ctxs { padding: .25em .5em; overflow-y: scroll; max-height: 10.5em; }
 
-@media (prefers-color-scheme: dark) { #source p label.ctx { color: #777; } }
+#source .p label.ctx { color: #999; display: inline-block; padding: 0 .5em; font-size: .8333em; user-select: none; }
 
-#source p .ctxs { display: block; max-height: 0; overflow-y: hidden; transition: all .2s; padding: 0 .5em; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; white-space: nowrap; background: #aef; border-radius: .25em; margin-right: 1.75em; }
+@media (prefers-color-scheme: dark) { #source .p label.ctx { color: #777; } }
 
-@media (prefers-color-scheme: dark) { #source p .ctxs { background: #056; } }
+#source .p .ctxs { display: block; user-select: none; max-height: 0; overflow-y: hidden; transition: all .2s; padding: 0 .5em; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; white-space: nowrap; background: #aef; border-radius: .25em; margin-right: 1.75em; }
 
-#source p .ctxs span { display: block; text-align: right; }
+@media (prefers-color-scheme: dark) { #source .p .ctxs { background: #056; } }
+
+#source .p .ctxs span { display: block; text-align: right; }
 
 #index { font-family: SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 0.875em; }
 

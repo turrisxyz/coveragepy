@@ -97,7 +97,7 @@ $dark-context-bg-color:   #056;
 }
 
 // Page-wide styles
-html, body, h1, h2, h3, p, table, td, th {
+html, body, h1, h2, h3, p, table, td, th, div.p {
     margin: 0;
     padding: 0;
     border: 0;
@@ -126,7 +126,7 @@ a {
     @include focus-border;
 }
 
-p {
+p, div.p {
     font-size: .875em;
     line-height: 1.4em;
 }
@@ -351,7 +351,7 @@ $border-indicator-width: .2em;
     padding: 1em 0 1em $left-gutter;
     font-family: $font-code;
 
-    p {
+    .p {
         // position relative makes position:absolute pop-ups appear in the right place.
         position: relative;
         white-space: pre;
@@ -369,6 +369,7 @@ $border-indicator-width: .2em;
             padding-right: 1em;
             color: $light-gray4;
             @include color-dark($dark-gray4);
+            user-select: none;
 
             a {
                 text-decoration: none;
@@ -486,6 +487,10 @@ $border-indicator-width: .2em;
 
         }
 
+        .x {
+            xxuser-select: none;
+        }
+
         .r {
             position: absolute;
             top: 0;
@@ -498,6 +503,7 @@ $border-indicator-width: .2em;
             color: $light-gray5;
             @include color-dark($dark-gray6);
             padding-right: .5em;
+            user-select: none;
 
             &.short:hover ~ .long {
                 display: block;
@@ -553,10 +559,12 @@ $border-indicator-width: .2em;
             display: inline-block;
             padding: 0 .5em;
             font-size: .8333em;   // 10/12
+            user-select: none;
         }
 
         .ctxs {
             display: block;
+            user-select: none;
             max-height: 0;
             overflow-y: hidden;
             transition: all .2s;

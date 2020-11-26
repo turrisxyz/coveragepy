@@ -70,9 +70,9 @@
 <div id="source">
     {% for line in lines -%}
         {% joined %}
-        <p id="t{{line.number}}" class="{{line.css_class}}">
+        <div id="t{{line.number}}" class="p {{line.css_class}}">
             <span class="n"><a href="#t{{line.number}}">{{line.number}}</a></span>
-            <span class="t">{{line.html}}&nbsp;</span>
+            <span class="t">{{line.html}}</span><span class="x">&#x2009;</span>
             {% if line.context_list %}
                 <input type="checkbox" id="ctxs{{line.number}}" />
             {% endif %}
@@ -83,7 +83,7 @@
                     <span class="annotate long">{{line.annotate_long}}</span>
                 {% endif %}
                 {% if line.contexts %}
-                    <label for="ctxs{{line.number}}" class="ctx">{{ line.contexts_label }}</label>
+                    <label for="ctxs{{line.number}}" class="ctx">{{line.contexts_label}}</label>
                 {% endif %}
             </span>
             {# Things that should appear below the line. #}
@@ -94,7 +94,7 @@
                     {% endfor %}
                 </span>
             {% endif %}
-        </p>
+        </div>
         {% endjoined %}
     {% endfor %}
 </div>
