@@ -336,6 +336,16 @@ class HtmlWithUnparsableFilesTest(HtmlTestHelpers, CoverageTest):
         with pytest.raises(NotPython, match=msg):
             cov.html_report()
 
+    def test_dotpy_is_binary(self):
+        self.make_file("main.py", "import innocuous")
+        self.make_file("innocuous.py", "a = 1")
+        cov = coverage.Coverage()
+        self.start_import_stop(cov, "main")
+        self.make_file("innocuous.py", bytes=b"\x99\x01\xff\xee\xdd\xcc\xbb")
+        msg = "Couldn't parse '.*innocuous.py' as Python source: .* at line 1"
+        with pytest.raises(NotPython, match=msg):
+            cov.html_report()
+
     def test_dotpy_not_python_ignored(self):
         self.make_file("main.py", "import innocuous")
         self.make_file("innocuous.py", "a = 2")
