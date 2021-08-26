@@ -781,12 +781,40 @@ CTracer_handle_exception(CTracer *self, PyFrameObject *frame)
     return RET_OK;
 }
 
+static CTracer *self_stack[1000];
+static int self_stack_top = -1;
+static CTracer *the_tracer;
+
 /*
  * The Trace Function
  */
 static int
 CTracer_trace(CTracer *self, PyFrameObject *frame, int what, PyObject *arg_unused)
 {
+    switch (what) {
+    case PyTrace_CALL:
+        if (self_stack_top == -1) {
+            self_stack_top = 0;
+            self = the_tracer;
+        }
+        else {
+            self_stack_top++;
+        }
+        self_stack[self_stack_top] = self;
+        break;
+
+    case PyTrace_RETURN:
+        if (self_stack_top >= 0) {
+            self_stack_top--;
+        }
+        break;
+    }
+
+    if (self_stack_top == -1) {
+        return RET_OK;
+    }
+    self = self_stack[self_stack_top];
+
     int ret = RET_ERROR;
 
     #if DO_NOTHING
@@ -990,6 +1018,7 @@ CTracer_start(CTracer *self, PyObject *args_unused)
 
     /* start() returns a trace function usable with sys.settrace() */
     Py_INCREF(self);
+    the_tracer = self;
     return (PyObject *)self;
 }
 

@@ -15,6 +15,10 @@ from coverage.pytracer import PyTracer
 
 os = isolate_module(os)
 
+def debugmsg(msg, flush=True):
+    return
+    with open("/tmp/debug.txt", "a") as f:
+        print(msg, file=f, flush=True)
 
 try:
     # Use the C extension code when we can, for speed.
@@ -233,7 +237,9 @@ class Collector:
 
     def _start_tracer(self):
         """Start a new Tracer object, and store it in self.tracers."""
+        debugmsg("Making a new tracer")
         tracer = self._trace_class()
+        debugmsg("Made a new tracer")
         tracer.data = self.data
         tracer.trace_arcs = self.branch
         tracer.should_trace = self.should_trace
@@ -261,7 +267,9 @@ class Collector:
         if hasattr(tracer, 'disable_plugin'):
             tracer.disable_plugin = self.disable_plugin
 
+        debugmsg("about to start")
         fn = tracer.start()
+        debugmsg("started")
         self.tracers.append(tracer)
 
         return fn
@@ -303,7 +311,9 @@ class Collector:
 
         try:
             # Install the tracer on this thread.
+            debugmsg("About to start", flush=True)
             fn = self._start_tracer()
+            debugmsg("Started", flush=True)
         except:
             if self._collectors:
                 self._collectors[-1].resume()
@@ -311,7 +321,9 @@ class Collector:
 
         # If _start_tracer succeeded, then we add ourselves to the global
         # stack of collectors.
+        debugmsg("About to append", flush=True)
         self._collectors.append(self)
+        debugmsg("Appended", flush=True)
 
         # Replay all the events from fullcoverage into the new trace function.
         for args in traces0:
