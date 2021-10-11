@@ -389,6 +389,12 @@ class InOrOut(object):
                     msg = "Already imported a file that will be measured: {}".format(filename)
                     self.warn(msg, slug="already-imported")
                     warned.add(filename)
+                elif self.debug and self.debug.should('trace'):
+                    self.debug.write(
+                        "Didn't trace already imported file {!r}: {}".format(
+                            disp.original_filename, disp.reason
+                        )
+                    )
 
     def warn_unimported_source(self):
         """Warn about source packages that were of interest, but never traced."""
