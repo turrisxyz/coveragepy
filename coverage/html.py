@@ -441,7 +441,11 @@ class IncrementalChecker:
         """Check the global data that can affect incremental reporting."""
         m = Hasher()
         for d in data:
-            m.update(d)
+            try:
+                m.update(d)
+            except:
+                print("Couldn't hash this: {d!r}".format(d=d))
+                raise
         these_globals = m.hexdigest()
         if self.globals != these_globals:
             self.reset()
